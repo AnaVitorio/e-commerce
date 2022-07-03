@@ -5,7 +5,7 @@ public abstract class Pedido {
     private int idPedido;
     private String donoDoPedido;
     private String itemDoPedido;
-    private Map<Integer, String> matriculaParaAluno = new HashMap<>();
+    private Map<Integer, String> pedidoMap = new HashMap<>();
 
     
     
