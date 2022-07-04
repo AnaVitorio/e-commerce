@@ -1,8 +1,6 @@
-import java.util.HashMap;
-import java.util.Map;
+
 import java.util.Random;
 
-import javax.lang.model.element.QualifiedNameable;
 
 public class Cliente extends Loja{
     Random r = new Random();

@@ -3,8 +3,9 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public abstract class Loja implements ServivosDaLoja {
+public abstract class Loja implements ServicosDaLoja {
     //Acessivel para a classe e subclasses de Loja
+	// os produtos poderiam ser um Map com o id do vendedor e o produto
     protected static Set<Produto> produtos = new HashSet<>();
     protected static Set<Produto> produtoModaFeminina = new HashSet<>();
     protected static Set<Produto> produtoModaMasculina = new HashSet<>();
@@ -12,8 +13,8 @@ public abstract class Loja implements ServivosDaLoja {
     protected static Set<Produto> produtoEletronicos = new HashSet<>();
     protected static Set<Produto> tipoProdutos = new HashSet<>();
 
-   
-    protected Map<Integer, Produto> carrinhoVirtual = new HashMap<>();
+   //Talvez seja melhor ser um Set
+    protected static Map<Integer, Produto> carrinhoVirtual = new HashMap<>();
     
     @Override
     public void listarProdutos(EnumCategoria tipoDeProduto){
@@ -28,6 +29,7 @@ public abstract class Loja implements ServivosDaLoja {
       //verificar se existe a quantidade desejado do produto
       if (produtos.contains(produto) && produto.getQuantidadeDoProduto() <= quantidade){
         //compra com sucesso.
+		carrinhoVirtual.put(1, produto);
         produto.setQuantidadeDoProduto(produto.getQuantidadeDoProduto() - quantidade);
         
       }
@@ -43,6 +45,12 @@ public abstract class Loja implements ServivosDaLoja {
 
    }
 
+   public void realizarPagamento(EnumMetodosDePagamento pagamento){
+    if(pagamento.equals(EnumMetodosDePagamento.CARTAO_PARCELADO)){
+		throw new RuntimeException("Para pagamentos com Cartão Parcelado, informe o número de parcelas");
+    }
+     
+   }
 
 
   public Set<Produto> verificaCategoria(EnumCategoria tipoDeProduto){
