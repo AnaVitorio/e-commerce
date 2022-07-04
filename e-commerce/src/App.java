@@ -1,9 +1,12 @@
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
+
 
 public class App {
     public static void main(String[] args) throws Exception {
         
-        Vendedor vendedor = new Vendedor();
+        Vendedor vendedor = new Vendedor("Vendedor1");
         Cliente cliente = new Cliente("Ana");
 
         Produto produto = new Produto.ProdutoBuilder()
@@ -38,6 +41,21 @@ public class App {
         //     System.out.println(pt);
         // }
         
+        //Cliente comprando produto
+        // cliente.comprarProduto(produto2, 2);
+        //Cliente listando seus produtos do carrinho
+        // System.out.println(cliente.listarMeusProdutos());
+
+
+        //A lógica melhor seria primeiro o cliente adiciona no carrinho 
+        // Depois compra 
+        // cliente.comprarProduto(produto, 2);
+
+         Set<Produto> produtos = new HashSet<>();
+         produtos.add(produto2);
+
+         
+         System.out.println(produtos.contains(produto2));
         
     }
 

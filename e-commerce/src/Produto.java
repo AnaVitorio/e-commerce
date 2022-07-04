@@ -26,6 +26,10 @@ public class Produto extends Loja{
         return quantidadeDoProduto;
     }
 
+	public void setQuantidadeDoProduto(int quantidadeDoProduto){
+		this.quantidadeDoProduto = quantidadeDoProduto;
+	}
+
     public BigDecimal getPrecoPorUnidade() {
         return precoPorUnidade;
     }
