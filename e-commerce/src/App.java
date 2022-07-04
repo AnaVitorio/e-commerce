@@ -1,7 +1,4 @@
 import java.math.BigDecimal;
-import java.util.HashSet;
-import java.util.Set;
-
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -23,39 +20,34 @@ public class App {
         .quantidadeProduto(100)
         .precoPorUnidade(new BigDecimal(50)).build();
 
+        Produto produto3 = new Produto.ProdutoBuilder()
+        .nomeProduto("Fone")
+        .categoria(EnumCategoria.ELETRONICOS)
+        .quantidadeProduto(100)
+        .precoPorUnidade(new BigDecimal(150)).build();
+
+        Produto produto4 = new Produto.ProdutoBuilder()
+        .nomeProduto("Bola de Futebol")
+        .categoria(EnumCategoria.ESPORTES)
+        .quantidadeProduto(100)
+        .precoPorUnidade(new BigDecimal(50)).build();
+
     
         vendedor.adicionarProduto(produto);
         vendedor.adicionarProduto(produto2);
+        vendedor.adicionarProduto(produto3);
+        vendedor.adicionarProduto(produto4);
         // vendedor.listarProdutos(EnumCategoria.TODOS_PRODUTOS);
         // System.out.println();
         // vendedor.listarProdutos(EnumCategoria.MODA_FEMININA);
         // System.out.println();
-        //vendedor.listarProdutos(EnumCategoria.MODA_MASCULINA);
+        // vendedor.listarProdutos(EnumCategoria.MODA_MASCULINA);
 
       
         // cliente.listarProdutos(EnumCategoria.TODOS_PRODUTOS);
-        cliente.listarProdutos(EnumCategoria.MODA_FEMININA);
-    
+        // cliente.listarProdutos(EnumCategoria.ELETRONICOS);
+        // cliente.listarProdutos(EnumCategoria.ESPORTES);
         
-        // for(Produto pt : cliente.produtos){
-        //     System.out.println(pt);
-        // }
-        
-        //Cliente comprando produto
-        // cliente.comprarProduto(produto2, 2);
-        //Cliente listando seus produtos do carrinho
-        // System.out.println(cliente.listarMeusProdutos());
-
-
-        //A lógica melhor seria primeiro o cliente adiciona no carrinho 
-        // Depois compra 
-        // cliente.comprarProduto(produto, 2);
-
-         Set<Produto> produtos = new HashSet<>();
-         produtos.add(produto2);
-
-         
-         System.out.println(produtos.contains(produto2));
         
     }
 

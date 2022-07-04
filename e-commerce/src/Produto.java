@@ -1,6 +1,7 @@
 import java.math.BigDecimal;
 
 public class Produto extends Loja{
+	private int idVendedor;
     private String nomeDoProduto;
     private EnumCategoria categoria;
     private int quantidadeDoProduto;
@@ -14,6 +15,13 @@ public class Produto extends Loja{
 	}
 
 
+	public int getIdVendedor() {
+        return idVendedor;
+    }
+
+	public void setIdVendedor(int idVendedor){
+		this.idVendedor = idVendedor;
+	}
     public String getNomeDoProduto() {
         return nomeDoProduto;
     }
@@ -37,7 +45,7 @@ public class Produto extends Loja{
 
 	@Override
 	public String toString() {
-		return "Produto: "+this.nomeDoProduto+", "+this.categoria+", "+this.quantidadeDoProduto+", "+this.precoPorUnidade;
+		return "Produto: "+this.idVendedor+", "+this.nomeDoProduto+", "+this.categoria+", "+this.quantidadeDoProduto+", "+this.precoPorUnidade;
 	}
 
 	public static class ProdutoBuilder{
@@ -46,7 +54,6 @@ public class Produto extends Loja{
         private int quantidadeDoProduto;
         private BigDecimal precoPorUnidade;
 
-		
 		public ProdutoBuilder nomeProduto(String nome) {
 			this.nomeDoProduto = nome;
 			return this;

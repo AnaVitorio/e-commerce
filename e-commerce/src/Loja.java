@@ -1,11 +1,8 @@
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 public abstract class Loja implements ServicosDaLoja {
     //Acessivel para a classe e subclasses de Loja
-	// os produtos poderiam ser um Map com o id do vendedor e o produto
     protected static Set<Produto> produtos = new HashSet<>();
     protected static Set<Produto> produtoModaFeminina = new HashSet<>();
     protected static Set<Produto> produtoModaMasculina = new HashSet<>();
@@ -13,12 +10,20 @@ public abstract class Loja implements ServicosDaLoja {
     protected static Set<Produto> produtoEletronicos = new HashSet<>();
     protected static Set<Produto> tipoProdutos = new HashSet<>();
 
-   //Talvez seja melhor ser um Set
-    protected static Map<Integer, Produto> carrinhoVirtual = new HashMap<>();
+	//NÃO ACEITA CHAVES DUPLICADAS
+	// protected static Map<Integer, Produto> produtos = new HashMap<>();
+    // protected static Map<Integer, Produto> produtoModaFeminina = new HashMap<>();
+    // protected static Map<Integer, Produto> produtoModaMasculina = new HashMap<>();
+    // protected static Map<Integer, Produto> produtoEsportes = new HashMap<>();
+    // protected static Map<Integer, Produto> produtoEletronicos = new HashMap<>();
+    // protected static Map<Integer, Produto> tipoProdutos = new HashMap<>();
+
+
+    protected static Set<Produto> carrinhoVirtual = new HashSet<>();
     
     @Override
     public void listarProdutos(EnumCategoria tipoDeProduto){
-        for(Produto produto : verificaCategoria(tipoDeProduto)){
+        for( Produto produto : verificaCategoria(tipoDeProduto)){
           System.out.println(produto);
         }
         
@@ -26,10 +31,9 @@ public abstract class Loja implements ServicosDaLoja {
 
     @Override
     public void comprarProduto(Produto produto, int quantidade){
-      //verificar se existe a quantidade desejado do produto
       if (produtos.contains(produto) && produto.getQuantidadeDoProduto() <= quantidade){
         //compra com sucesso.
-		carrinhoVirtual.put(1, produto);
+		carrinhoVirtual.add(produto);
         produto.setQuantidadeDoProduto(produto.getQuantidadeDoProduto() - quantidade);
         
       }
@@ -53,21 +57,21 @@ public abstract class Loja implements ServicosDaLoja {
    }
 
 
-  public Set<Produto> verificaCategoria(EnumCategoria tipoDeProduto){
+  public  Set<Produto> verificaCategoria(EnumCategoria tipoDeProduto){
     if(tipoDeProduto == EnumCategoria.TODOS_PRODUTOS){
-      Set<Produto> tipoProdutos = produtos;
+		Set<Produto> tipoProdutos = produtos;
       return tipoProdutos;
     } else if(tipoDeProduto == EnumCategoria.ELETRONICOS){
-      Set<Produto> tipoProdutos = produtoEletronicos;
+		Set<Produto> tipoProdutos = produtoEletronicos;
       return tipoProdutos;
     } else if(tipoDeProduto == EnumCategoria.ESPORTES){
-      Set<Produto> tipoProdutos = produtoEsportes;
+		Set<Produto> tipoProdutos = produtoEsportes;
       return tipoProdutos;
     } else if(tipoDeProduto == EnumCategoria.MODA_FEMININA){
-      Set<Produto> tipoProdutos = produtoModaFeminina;
+		Set<Produto> tipoProdutos = produtoModaFeminina;
       return tipoProdutos;
     } else{
-      Set<Produto> tipoProdutos = produtoModaMasculina;
+		Set<Produto> tipoProdutos = produtoModaMasculina;
       return tipoProdutos;
     }
 

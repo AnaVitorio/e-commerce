@@ -19,13 +19,16 @@ public class Cliente extends Loja{
         return nomeCliente;
     }
 
-    public Produto listarMeusProdutos(){
-        return this.carrinhoVirtual.get(this.idCliente);
+    public void listarMeusProdutos(){
+        for(Produto produto : carrinhoVirtual){
+            System.out.println(produto);
+        }
+       
     }
 
     @Override
     public void comprarProduto(Produto produto, int quantidade){
-        this.carrinhoVirtual.put(idCliente, produto);
+        Loja.carrinhoVirtual.add(produto);
         
     }
 }
