@@ -4,7 +4,6 @@ public class Produto extends Loja{
 	private int idVendedor;
     private String nomeDoProduto;
     private EnumCategoria categoria;
-    private int quantidadeDoProduto;
     private BigDecimal precoPorUnidade;
 
 	private Produto(ProdutoBuilder builder) {
@@ -29,13 +28,13 @@ public class Produto extends Loja{
         return categoria;
     }
 
-    public int getQuantidadeDoProduto() {
-        return quantidadeDoProduto;
-    }
+    // public int getQuantidadeDoProduto() {
+    //     return quantidadeDoProduto;
+    // }
 
-	public void setQuantidadeDoProduto(int quantidadeDoProduto){
-		this.quantidadeDoProduto = quantidadeDoProduto;
-	}
+	// public void setQuantidadeDoProduto(int quantidadeDoProduto){
+	// 	this.quantidadeDoProduto = quantidadeDoProduto;
+	// }
 
     public BigDecimal getPrecoPorUnidade() {
         return precoPorUnidade;

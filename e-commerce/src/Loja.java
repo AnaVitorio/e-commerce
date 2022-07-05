@@ -9,25 +9,33 @@ public abstract class Loja implements ServicosDaLoja {
     protected static Set<Produto> produtoEsportes = new HashSet<>();
     protected static Set<Produto> produtoEletronicos = new HashSet<>();
     protected static Set<Produto> tipoProdutos = new HashSet<>();
-
-
+	private int quantidadeDoProduto;
     protected static Set<Produto> carrinhoVirtual = new HashSet<>();
     
-    @Override
+
+    public int getQuantidadeDoProduto() {
+		return quantidadeDoProduto;
+	}
+
+	public void setQuantidadeDoProduto(int quantidadeDoProduto) {
+		this.quantidadeDoProduto = quantidadeDoProduto;
+	}
+
+	@Override
     public void listarProdutos(EnumCategoria tipoDeProduto){
         for( Produto produto : verificaCategoria(tipoDeProduto)){
-          System.out.println(produto.getNomeDoProduto());
+          System.out.println(produto);
         }
-        
     }
 
     @Override
     public void comprarProduto(Produto produto, int quantidade){
-      if (produtos.contains(produto)){
-        produto.setQuantidadeDoProduto(quantidade);
-		carrinhoVirtual.add(produto);
-        
-      }
+		if (produtos.contains(produto)){
+			produto.setQuantidadeDoProduto(quantidade);
+			carrinhoVirtual.add(produto);
+		}else{
+			throw new RuntimeException("O Produto não está disponíve!");
+		}
     }
 
    @Override

@@ -28,27 +28,23 @@ public class App {
         .categoria(EnumCategoria.ESPORTES)
         .precoPorUnidade(new BigDecimal(50)).build();
 
-    
+        
         vendedor.adicionarProduto(produto);
         vendedor.adicionarProduto(produto2);
         vendedor.adicionarProduto(produto3);
         vendedor.adicionarProduto(produto4);
-        // vendedor.listarProdutos(EnumCategoria.TODOS_PRODUTOS);
-        // System.out.println();
-        // vendedor.listarProdutos(EnumCategoria.MODA_FEMININA);
-        // System.out.println();
-        // vendedor.listarProdutos(EnumCategoria.MODA_MASCULINA);
-
-      
-        // cliente.listarProdutos(EnumCategoria.TODOS_PRODUTOS);
-        // cliente.listarProdutos(EnumCategoria.ELETRONICOS);
-        // cliente.listarProdutos(EnumCategoria.ESPORTES);
-
+        
+        cliente.listarProdutos(EnumCategoria.TODOS_PRODUTOS);
+       
+        System.out.println();
 
         cliente.comprarProduto(produto, 2);
-        cliente.comprarProduto(produto2, 1);
+        cliente.comprarProduto(produto4, 1);
+
+        System.out.println("Produtos Comprados");
         cliente.listarMeusProdutos();
-        
+
+        cliente.realizarPagamento(EnumMetodosDePagamento.CARTAO_A_VISTA);
         
     }
 
