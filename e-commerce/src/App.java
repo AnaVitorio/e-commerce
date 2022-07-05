@@ -46,6 +46,14 @@ public class App {
 
         System.out.println();
         cliente.realizarPagamento(EnumMetodosDePagamento.CARTAO_A_VISTA);
+
+        Cliente joao = new Cliente("João");
+        joao.comprarProduto(produto3, 1);
+        joao.comprarProduto(produto2, 2);
+
+        System.out.println();
+        joao.realizarPagamento(EnumMetodosDePagamento.CARTAO_PARCELADO, 4);
+        
         
     }
 
