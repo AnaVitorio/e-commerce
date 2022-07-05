@@ -11,8 +11,6 @@ public class App {
         .categoria(EnumCategoria.MODA_FEMININA)
         .precoPorUnidade(new BigDecimal(5)).build();
 
-
-
         Produto produto2 = new Produto.ProdutoBuilder()
         .nomeProduto("Calça")
         .categoria(EnumCategoria.MODA_MASCULINA)
@@ -34,6 +32,7 @@ public class App {
         vendedor.adicionarProduto(produto3);
         vendedor.adicionarProduto(produto4);
         
+        System.out.println("Produtos Disponíveis na Loja:\n");
         cliente.listarProdutos(EnumCategoria.TODOS_PRODUTOS);
        
         System.out.println();
@@ -41,9 +40,11 @@ public class App {
         cliente.comprarProduto(produto, 2);
         cliente.comprarProduto(produto4, 1);
 
-        System.out.println("Produtos Comprados");
+        System.out.println("Produtos Comprados\n");
+    
         cliente.listarMeusProdutos();
 
+        System.out.println();
         cliente.realizarPagamento(EnumMetodosDePagamento.CARTAO_A_VISTA);
         
     }

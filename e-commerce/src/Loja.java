@@ -9,7 +9,7 @@ public abstract class Loja implements ServicosDaLoja {
     protected static Set<Produto> produtoEsportes = new HashSet<>();
     protected static Set<Produto> produtoEletronicos = new HashSet<>();
     protected static Set<Produto> tipoProdutos = new HashSet<>();
-	private int quantidadeDoProduto;
+	  private int quantidadeDoProduto;
     protected static Set<Produto> carrinhoVirtual = new HashSet<>();
     
 
