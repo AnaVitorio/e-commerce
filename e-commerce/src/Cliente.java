@@ -22,7 +22,9 @@ public class Cliente extends Loja{
     public void listarMeusProdutos(){
         for(Produto produto : carrinhoVirtual){
             System.out.println(produto);
+            System.out.println(produto.getQuantidadeDoProduto());
         }
+       
        
     }
 

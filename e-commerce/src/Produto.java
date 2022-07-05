@@ -10,7 +10,6 @@ public class Produto extends Loja{
 	private Produto(ProdutoBuilder builder) {
 		this.nomeDoProduto = builder.nomeDoProduto;
 		this.categoria = builder.categoria;
-		this.quantidadeDoProduto = builder.quantidadeDoProduto;
 		this.precoPorUnidade = builder.precoPorUnidade;
 	}
 
@@ -45,13 +44,13 @@ public class Produto extends Loja{
 
 	@Override
 	public String toString() {
-		return "Produto: "+this.idVendedor+", "+this.nomeDoProduto+", "+this.categoria+", "+this.quantidadeDoProduto+", "+this.precoPorUnidade;
+		return "Produto: "+"Código do vendedor: "+this.idVendedor+", Nome do Produto: "+this.nomeDoProduto
+		+", Categoria: "+this.categoria+", Preço por Unidade: R$ "+this.precoPorUnidade;
 	}
 
 	public static class ProdutoBuilder{
         private String nomeDoProduto;
         private EnumCategoria categoria;
-        private int quantidadeDoProduto;
         private BigDecimal precoPorUnidade;
 
 		public ProdutoBuilder nomeProduto(String nome) {
@@ -60,10 +59,6 @@ public class Produto extends Loja{
 		}
 		public ProdutoBuilder categoria(EnumCategoria categoria) {
 			this.categoria = categoria;
-			return this;
-		}
-		public ProdutoBuilder quantidadeProduto(int quantidadeDoProduto) {
-			this.quantidadeDoProduto = quantidadeDoProduto;
 			return this;
 		}
 

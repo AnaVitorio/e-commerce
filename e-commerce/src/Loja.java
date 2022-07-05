@@ -10,49 +10,40 @@ public abstract class Loja implements ServicosDaLoja {
     protected static Set<Produto> produtoEletronicos = new HashSet<>();
     protected static Set<Produto> tipoProdutos = new HashSet<>();
 
-	//NÃO ACEITA CHAVES DUPLICADAS
-	// protected static Map<Integer, Produto> produtos = new HashMap<>();
-    // protected static Map<Integer, Produto> produtoModaFeminina = new HashMap<>();
-    // protected static Map<Integer, Produto> produtoModaMasculina = new HashMap<>();
-    // protected static Map<Integer, Produto> produtoEsportes = new HashMap<>();
-    // protected static Map<Integer, Produto> produtoEletronicos = new HashMap<>();
-    // protected static Map<Integer, Produto> tipoProdutos = new HashMap<>();
-
 
     protected static Set<Produto> carrinhoVirtual = new HashSet<>();
     
     @Override
     public void listarProdutos(EnumCategoria tipoDeProduto){
         for( Produto produto : verificaCategoria(tipoDeProduto)){
-          System.out.println(produto);
+          System.out.println(produto.getNomeDoProduto());
         }
         
     }
 
     @Override
     public void comprarProduto(Produto produto, int quantidade){
-      if (produtos.contains(produto) && produto.getQuantidadeDoProduto() <= quantidade){
-        //compra com sucesso.
+      if (produtos.contains(produto)){
+        produto.setQuantidadeDoProduto(quantidade);
 		carrinhoVirtual.add(produto);
-        produto.setQuantidadeDoProduto(produto.getQuantidadeDoProduto() - quantidade);
         
       }
     }
 
    @Override
    public void realizarPagamento(EnumMetodosDePagamento pagamento, int quantidadeParcelamento){
-    if(pagamento.equals(EnumMetodosDePagamento.CARTAO_PARCELADO) && quantidadeParcelamento <= 3){
-
-    } else{
-      throw new RuntimeException("Para pagamentos com Cartão Parcelado, limite de parcelamento de 3X.");
-    }
+	ValidaPagamentoCartao validacaoCartao = new ValidaPagamentoCartao();
+	if(validacaoCartao.validar(pagamento, quantidadeParcelamento)){
+		System.out.println("Pagamento Aprovado!");
+	} 
 
    }
 
    public void realizarPagamento(EnumMetodosDePagamento pagamento){
-    if(pagamento.equals(EnumMetodosDePagamento.CARTAO_PARCELADO)){
-		throw new RuntimeException("Para pagamentos com Cartão Parcelado, informe o número de parcelas");
-    }
+	ValidaOutrosPagamentos validaOutrosPagamentos = new ValidaOutrosPagamentos();
+	if(validaOutrosPagamentos.validar(pagamento)){
+		System.out.println("Pagamento Aprovado!");
+	}
      
    }
 
