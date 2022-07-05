@@ -28,14 +28,6 @@ public class Produto extends Loja{
         return categoria;
     }
 
-    // public int getQuantidadeDoProduto() {
-    //     return quantidadeDoProduto;
-    // }
-
-	// public void setQuantidadeDoProduto(int quantidadeDoProduto){
-	// 	this.quantidadeDoProduto = quantidadeDoProduto;
-	// }
-
     public BigDecimal getPrecoPorUnidade() {
         return precoPorUnidade;
     }
@@ -66,7 +58,6 @@ public class Produto extends Loja{
 			return this;
 		}
 
-		//Return the finally consrcuted User object
 		public Produto build() {
 			Produto produto =  new Produto(this);
 			return produto;

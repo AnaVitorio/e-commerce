@@ -32,9 +32,6 @@ public class Vendedor extends Loja {
 
     }
 
-    public static void removeProduto(){
-        
-    }
 }
 
 

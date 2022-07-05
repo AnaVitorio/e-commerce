@@ -2,7 +2,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 public abstract class Loja implements ServicosDaLoja {
-    //Acessivel para a classe e subclasses de Loja
     protected static Set<Produto> produtos = new HashSet<>();
     protected static Set<Produto> produtoModaFeminina = new HashSet<>();
     protected static Set<Produto> produtoModaMasculina = new HashSet<>();

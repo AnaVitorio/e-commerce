@@ -5,5 +5,4 @@ public enum EnumCategoria {
     ELETRONICOS,
     TODOS_PRODUTOS;
 
-    
 }
